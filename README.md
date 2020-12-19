@@ -14,12 +14,16 @@
 ## RIKA-Firenet adapter for ioBroker
 
 Control your RIKA stove
+
 ## Information
-Fill following textboxes in Adapter-Config:
-Username: (E-Mail for your Rika account)
-Password: (Password for your Rika account)
-Stove-ID: (go to your Rika account and find out)
-Polling-Interval: (min 1 Minute, otherwise they may lika a DOS-Attacker)
+Adapter in this first initial release, only polling values from your stove. Setting-actions will follow soon.
+Polling-intervall minimum is 1 minute so that you do not appear to be a DOS-Attacker
+
+Fill textboxes in Adapter-Config:
+* Username: (E-Mail for your Rika account)
+* Password: (Password for your Rika account)
+* Stove-ID: (go to your Rika account and find out)
+* Polling-Interval: (min 1 Minute)
 
 ## Changelog
 
