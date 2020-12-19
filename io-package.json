@@ -73,7 +73,9 @@
 	"native": {
 		"myuser": "",
 		"mypassword": "",
-		"mystoveid": ""
+		"mystoveid": "",
+		"myinterval": ""
+		
 	},
 	"objects": [],
 	"instanceObjects": [
