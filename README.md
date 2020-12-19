@@ -13,7 +13,7 @@
 
 ## RIKA-Firenet adapter for ioBroker
 
-Control your RIKA stove
+Control your RIKA stoves
 
 ## Information
 Adapter in this first initial release, only polling values from your stove. Setting-actions will follow soon.
