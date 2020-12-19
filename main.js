@@ -104,10 +104,8 @@ class RikaFirenet extends utils.Adapter {
 			if (response.statusCode == 200 && body.indexOf(this.config.mystoveid) > -1) {// request successful
 				var json = JSON.parse(body);
 
-				//set states only, if json is wellformed, to prevent from creating malformed states
+				//set states only, if json has a lastConfirmedRevision, to prevent from creating malformed states in cases of db-errors in json
 				if (json.lastConfirmedRevision) {
-									
-				//}
 
 					this.setState(this.config.mystoveid + ".name", { val: json.name, ack: true });
 					this.setState(this.config.mystoveid + ".stoveID", { val: json.stoveID, ack: true });
@@ -128,6 +126,8 @@ class RikaFirenet extends utils.Adapter {
 					for (let [key, value] of Object.entries(json.stoveFeatures)) {
 						this.setStoveStates(`stoveFeatures.${key}`, "state", "", true, false, value);
 					}
+				} else {
+					this.log.error("Malformed json: " + json);
 				}
 			} else {
 				//if connection to API fails, cycle webLogin, till sucessfully login
