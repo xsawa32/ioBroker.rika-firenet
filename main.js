@@ -98,41 +98,45 @@ class RikaFirenet extends utils.Adapter {
 			})
 		}
 
-		getStoveValues() {
-			request.get({url:'https://www.rika-firenet.com/api/client/' + this.config.mystoveid + '/status'}, (error, response, body) => {
-						this.log.info(response.statusCode + " - API-Connection sucessful");
-						if (response.statusCode == 200 && body.indexOf(this.config.mystoveid) > -1) {// request successful
-								var json = JSON.parse(body);
+	getStoveValues() {
+		request.get({url:'https://www.rika-firenet.com/api/client/' + this.config.mystoveid + '/status'}, (error, response, body) => {
+			this.log.info(response.statusCode + " - API-Connection sucessful");
+			if (response.statusCode == 200 && body.indexOf(this.config.mystoveid) > -1) {// request successful
+				var json = JSON.parse(body);
 
-								//if kauderwelsch, dann folgendes nicht ausführen, damit kein Scheiss angelegt wird
+				//set states only, if json is wellformed, to prevent from creating malformed states
+				if (json.lastConfirmedRevision) {
+									
+				//}
 
-								this.setState(this.config.mystoveid + ".name", { val: json.name, ack: true });
-								this.setState(this.config.mystoveid + ".stoveID", { val: json.stoveID, ack: true });
-								this.setState(this.config.mystoveid + ".lastSeenMinutes", { val: json.lastSeenMinutes, ack: true });
-								this.setState(this.config.mystoveid + ".lastConfirmedRevision", { val: json.lastConfirmedRevision, ack: true });
-								this.setState(this.config.mystoveid + ".stoveType", { val: json.stoveType, ack: true });
-								this.setState(this.config.mystoveid + ".oem", { val: json.oem, ack: true });
+					this.setState(this.config.mystoveid + ".name", { val: json.name, ack: true });
+					this.setState(this.config.mystoveid + ".stoveID", { val: json.stoveID, ack: true });
+					this.setState(this.config.mystoveid + ".lastSeenMinutes", { val: json.lastSeenMinutes, ack: true });
+					this.setState(this.config.mystoveid + ".lastConfirmedRevision", { val: json.lastConfirmedRevision, ack: true });
+					this.setState(this.config.mystoveid + ".stoveType", { val: json.stoveType, ack: true });
+					this.setState(this.config.mystoveid + ".oem", { val: json.oem, ack: true });
 	
-									//create and/or update states in controls, sensors and stoveFeatures
-									for (let [key, value] of Object.entries(json.controls)) {
-												this.setStoveStates(`controls.${key}`, "state", "", true, true, value);
-									}
+					//create and/or update states in controls, sensors and stoveFeatures
+					for (let [key, value] of Object.entries(json.controls)) {
+						this.setStoveStates(`controls.${key}`, "state", "", true, true, value);
+					}
 	
-									for (let [key, value] of Object.entries(json.sensors)) {
-												this.setStoveStates(`sensors.${key}`, "state", "", true, false, value);
-									}
+					for (let [key, value] of Object.entries(json.sensors)) {
+						this.setStoveStates(`sensors.${key}`, "state", "", true, false, value);
+					}
 	
-									for (let [key, value] of Object.entries(json.stoveFeatures)) {
-												this.setStoveStates(`stoveFeatures.${key}`, "state", "", true, false, value);
-									}
-						} else {
-							//if connection to API fails, cycle webLogin, till sucessfully login
-							TimeoutID = setTimeout(this.webLogin, this.config.myinterval * 60000);
-						}
-			})
-			//call again every ... milliseconds
-			clearTimeout(TimeoutID);
-			TimeoutID = setTimeout(this.getStoveValues.bind(this), this.config.myinterval * 60000);
+					for (let [key, value] of Object.entries(json.stoveFeatures)) {
+						this.setStoveStates(`stoveFeatures.${key}`, "state", "", true, false, value);
+					}
+				}
+			} else {
+				//if connection to API fails, cycle webLogin, till sucessfully login
+				TimeoutID = setTimeout(this.webLogin, this.config.myinterval * 60000);
+			}
+		})
+		//call again every ... milliseconds
+		clearTimeout(TimeoutID);
+		TimeoutID = setTimeout(this.getStoveValues.bind(this), this.config.myinterval * 60000);
 		}
 
 	/**
