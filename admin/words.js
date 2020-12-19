@@ -15,7 +15,7 @@ systemDictionary = {
 		"zh-cn": "rika-firenet的适配器设置"
 	},
 	"myuser": {
-		"en": "myuser",
+		"en": "Username",
 		"de": "Benutzer"
 	},
 	"mypassword": {
