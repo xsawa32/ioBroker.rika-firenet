@@ -1,4 +1,3 @@
-![Logo](admin/rika-firenet.png)
 # ioBroker.rika-firenet
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.rika-firenet.svg)](https://www.npmjs.com/package/iobroker.rika-firenet)
