@@ -19,11 +19,7 @@ Control your RIKA stoves
 Adapter in this first initial release, only polling values from your stove. Setting-actions will follow soon.
 Polling-intervall minimum is 1 minute so that you do not appear to be a DOS-Attacker
 
-<<<<<<< HEAD
-Fill textboxes in Adapter-Config:
-=======
 Fill textboxes in Adapter-Config
->>>>>>> ae84f50309efe27ee609abcaeff4415dbc5d0dd0
 * Username: (E-Mail for your Rika account)
 * Password: (Password for your Rika account)
 * Stove-ID: (go to your Rika account and find out)
