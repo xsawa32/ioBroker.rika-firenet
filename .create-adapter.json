@@ -1,0 +1,40 @@
+{
+	"cli": true,
+	"adapterName": "rika-firenet",
+	"title": "Rika-Firenet",
+	"description": "Control your RIKA stove",
+	"keywords": [
+		"Rika",
+		"Firenet",
+		"Stove",
+		"Pelletofen"
+	],
+	"expert": "yes",
+	"features": [
+		"adapter"
+	],
+	"adminFeatures": [],
+	"type": "climate-control",
+	"startMode": "daemon",
+	"connectionType": "cloud",
+	"dataSource": "poll",
+	"connectionIndicator": "yes",
+	"language": "JavaScript",
+	"adminReact": "no",
+	"tools": [
+		"ESLint",
+		"type checking"
+	],
+	"indentation": "Tab",
+	"quotes": "double",
+	"es6class": "yes",
+	"authorName": "xsawa32",
+	"authorGithub": "xsawa32",
+	"authorEmail": "a.wass@sbg.at",
+	"gitRemoteProtocol": "HTTPS",
+	"gitCommit": "no",
+	"license": "MIT License",
+	"ci": "gh-actions",
+	"dependabot": "no",
+	"creatorVersion": "1.31.0"
+}

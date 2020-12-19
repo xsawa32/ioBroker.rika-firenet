@@ -1,0 +1,102 @@
+{
+	"common": {
+		"name": "rika-firenet",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "Rika-Firenet",
+		"titleLang": {
+			"en": "Rika-Firenet",
+			"de": "Rika-Firenet",
+			"ru": "Rika-Firenet",
+			"pt": "Rika-Firenet",
+			"nl": "Rika-Firenet",
+			"fr": "Rika-Firenet",
+			"it": "Rika-Firenet",
+			"es": "Rika-Firenet",
+			"pl": "Rika-Firenet",
+			"zh-cn": "Rika-Firenet"
+		},
+		"desc": {
+			"en": "Control your RIKA stove",
+			"de": "Control your RIKA stove",
+			"ru": "Control your RIKA stove",
+			"pt": "Control your RIKA stove",
+			"nl": "Control your RIKA stove",
+			"fr": "Control your RIKA stove",
+			"it": "Control your RIKA stove",
+			"es": "Control your RIKA stove",
+			"pl": "Control your RIKA stove",
+			"zh-cn": "Control your RIKA stove"
+		},
+		"authors": [
+			"xsawa32 <a.wass@sbg.at>"
+		],
+		"keywords": [
+			"Rika",
+			"Firenet",
+			"Stove",
+			"Pelletofen"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "rika-firenet.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/xsawa32/ioBroker.rika-firenet/master/admin/rika-firenet.png",
+		"readme": "https://github.com/xsawa32/ioBroker.rika-firenet/blob/master/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "climate-control",
+		"compact": true,
+		"connectionType": "cloud",
+		"dataSource": "poll",
+		"materialize": true,
+		"dependencies": [
+			{
+				"js-controller": ">=2.0.0"
+			}
+		]
+	},
+	"native": {
+		"myuser": "",
+		"mypassword": "",
+		"mystoveid": ""
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "Device or service connected",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		}
+	]
+}
