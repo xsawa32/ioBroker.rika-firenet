@@ -11,10 +11,11 @@
 
 **Tests:** ![Test and Release](https://github.com/xsawa32/ioBroker.rika-firenet/workflows/Test%20and%20Release/badge.svg)
 
-## rika-firenet adapter for ioBroker
+## RIKA-Firenet adapter for ioBroker
 
 Control your RIKA stove
-
+## Test
+ testtext
 ## Developer manual
 This section is intended for the developer. It can be deleted later
 
@@ -100,7 +101,7 @@ For later updates, the above procedure is not necessary. Just do the following:
 ## License
 MIT License
 
-Copyright (c) 2020 xsawa32 <a.wass@sbg.at>
+Copyright (c) 2020 Andreas Wass <a.wass@sbg.at>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
