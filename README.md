@@ -16,14 +16,32 @@
 Control your RIKA stoves
 
 ## Information
-Adapter in this first initial release, only polling values from your stove. Setting-actions will follow soon.
-Polling-intervall minimum is 1 minute so that you do not appear to be a DOS-Attacker
+ioBroker Adapter in this first initial release, only polling values from your stove. Setting-actions will follow soon.
+Polling-intervall minimum is 1 minute so you do not appear to be a DOS-Attacker to this websites
 
 Fill textboxes in Adapter-Config
 * Username: (E-Mail for your Rika account)
 * Password: (Password for your Rika account)
 * Stove-ID: (go to your Rika account and find out)
 * Polling-Interval: (min 1 Minute)
+
+## Download Pictures and states for vizualisation
+https://www.rika-firenet.com/images/status/Visu_Off.svg - use if sensors.statusMainState = 1 and sensors.statusSubState = 0 (Stove is off, Ofen ist aus)
+https://www.rika-firenet.com/images/status/Visu_Standby.svg - use if sensors.statusMainState = 1 and sensors.statusSubState = 1 (Standby, Ofen auf Standby)
+https://www.rika-firenet.com/images/status/Visu_Ignition.svg - use if sensors.statusMainState = 2 (Ignition, Zündung)
+https://www.rika-firenet.com/images/status/Visu_Ignition.svg - use if sensors.statusMainState = 3 (Starting, Startphase)
+https://www.rika-firenet.com/images/status/Visu_Bake.svg 
+https://www.rika-firenet.com/images/status/Visu_HeatingUp.svg
+https://www.rika-firenet.com/images/status/Visu_Control.svg - use if sensors.statusMainState = 4 (Regular Operationmode, Regelbetrieb)
+https://www.rika-firenet.com/images/status/Visu_Clean.svg - use if sensors.statusMainState = 5 (Cleaning)
+https://www.rika-firenet.com/images/status/Visu_BurnOff.svg - use if sensors.statusMainState = 6 (Burn Off, Ausbrand) 
+https://www.rika-firenet.com/images/status/Visu_SpliLog.svg - use if sensors.statusMainState = 11, 13, 14, 16, 17 or 50 (Wood-log check, Scheitholzcheck) 
+https://www.rika-firenet.com/images/status/Visu_SpliLog.svg - use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzbetrieb)
+
+## For detailed state-picture-combinations log in at Rika WebLogin
+* then call https://www.rika-firenet.com/web/stove/[YOURSTOVEID]
+* View sourcecode of this site (right mouse click - sourcecode)
+* Find the sensors.statusMainState and sensors.statusSubState - combinations
 
 ## Changelog
 
