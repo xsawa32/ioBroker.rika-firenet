@@ -17,7 +17,8 @@ Control your RIKA stoves
 
 ## Information
 First initial release, only polling values from your stove. Setting-actions will follow soon.
-Polling-intervall minimum is 1 minute so you do not appear to be a DOS-Attacker to this websites
+Polling-intervall minimum is 1 minute so you do not appear to be a DOS-Attacker against their websites.
+This Adapter was developed for my RIKA PARO, but should also work for other RIKA stoves.
 
 Fill textboxes in Adapter-Config
 * Username: (E-Mail for your Rika account)
@@ -65,6 +66,8 @@ use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzb
 
 ## Changelog
 
+### 0.0.3
+* (xsawa32) some changes in main.js
 ### 0.0.1
 * (xsawa32) initial release
 
