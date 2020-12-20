@@ -103,7 +103,7 @@ class RikaFirenet extends utils.Adapter {
 
 	getStoveValues() {
 		request.get({url:'https://www.rika-firenet.com/api/client/' + this.config.mystoveid + '/status'}, (error, response, body) => {
-			this.log.info(response.statusCode + " - API-Connection sucessful");
+			//this.log.info(response.statusCode + " - API-Connection sucessful");
 			if (response.statusCode == 200 && body.indexOf(this.config.mystoveid) > -1) {// request successful
 				var json = JSON.parse(body);
 
