@@ -16,7 +16,7 @@
 Control your RIKA stoves
 
 ## Information
-ioBroker Adapter in this first initial release, only polling values from your stove. Setting-actions will follow soon.
+First initial release, only polling values from your stove. Setting-actions will follow soon.
 Polling-intervall minimum is 1 minute so you do not appear to be a DOS-Attacker to this websites
 
 Fill textboxes in Adapter-Config
