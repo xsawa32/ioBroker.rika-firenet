@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use strict";
 
 /*
@@ -15,7 +16,7 @@ const utils = require("@iobroker/adapter-core");
 const request = require('request').defaults({jar: true});
 
 //Interval for polling
-var TimeoutID = null;
+this.TimeoutID = null;
 
 class RikaFirenet extends utils.Adapter {
 
@@ -45,8 +46,10 @@ class RikaFirenet extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		//this.log.info("config user: " + this.config.myuser);
-		//this.log.info("config password: " + this.config.mypassword);
+		this.log.info("config user: " + this.config.myuser);
+		this.log.info("config password: " + this.config.mypassword);
+		this.log.info("config interval: " + this.config.myinterval);
+		this.log.info("config stoveid: " + this.config.mystoveid);
 
 		//Create Device
 		await this.setObjectNotExistsAsync(this.config.mystoveid, {
@@ -76,7 +79,7 @@ class RikaFirenet extends utils.Adapter {
 
 	//Eigenes Zeug
 	webLogin () {
-		clearTimeout(TimeoutID);
+		clearTimeout(this.TimeoutID);
 
 		require("request")
 		request.post({url:'https://www.rika-firenet.com/web/login', form: {email:this.config.myuser, password:this.config.mypassword}}, (error, response, body) => {  	
@@ -93,7 +96,7 @@ class RikaFirenet extends utils.Adapter {
 					this.setState("info.connection", false, true);
 
 					//cycle webLogin, till sucessfully login
-					TimeoutID = setTimeout(this.webLogin, this.config.myinterval * 60000);
+					this.TimeoutID = setTimeout(this.webLogin.bind(this), this.config.myinterval * 60000);
 				}
 			})
 		}
@@ -131,12 +134,12 @@ class RikaFirenet extends utils.Adapter {
 				}
 			} else {
 				//if connection to API fails, cycle webLogin, till sucessfully login
-				TimeoutID = setTimeout(this.webLogin, this.config.myinterval * 60000);
+				this.TimeoutID = setTimeout(this.webLogin.bind(this), this.config.myinterval * 60000);
 			}
 		})
 		//call again every ... milliseconds
-		clearTimeout(TimeoutID);
-		TimeoutID = setTimeout(this.getStoveValues.bind(this), this.config.myinterval * 60000);
+		clearTimeout(this.TimeoutID);
+		this.TimeoutID = setTimeout(this.getStoveValues.bind(this), this.config.myinterval * 60000);
 		}
 
 	/**
@@ -180,7 +183,7 @@ class RikaFirenet extends utils.Adapter {
 			// clearTimeout(timeout2);
 			// ...
 			// clearInterval(interval1);
-			clearTimeout(TimeoutID);
+			clearTimeout(this.TimeoutID);
 
 			callback();
 		} catch (e) {
@@ -213,7 +216,7 @@ class RikaFirenet extends utils.Adapter {
 	onStateChange(id, state) {
 		if (state) {
 			// The state was changed
-			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			//this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
