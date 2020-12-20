@@ -66,6 +66,8 @@ use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzb
 
 ## Changelog
 
+### 0.0.4
+* (xsawa32) some changes in main.js
 ### 0.0.3
 * (xsawa32) some changes in main.js
 ### 0.0.1
