@@ -47,7 +47,7 @@ class RikaFirenet extends utils.Adapter {
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
 		this.log.info("config user: " + this.config.myuser);
-		this.log.info("config password: " + this.config.mypassword);
+		//this.log.info("config password: " + this.config.mypassword);
 		this.log.info("config interval: " + this.config.myinterval);
 		this.log.info("config stoveid: " + this.config.mystoveid);
 
