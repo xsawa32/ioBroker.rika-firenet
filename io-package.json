@@ -1,11 +1,11 @@
 {
 	"common": {
 		"name": "rika-firenet",
-		"version": "0.0.4",
+		"version": "0.0.5",
 		"news": {
-			"0.0.1": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
+			"0.0.5": {
+				"en": "update README",
+				"de": "Aktualisierung README",
 				"ru": "Начальная версия",
 				"pt": "lançamento inicial",
 				"nl": "Eerste uitgave",
