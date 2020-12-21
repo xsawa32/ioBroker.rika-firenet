@@ -65,7 +65,7 @@ use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzb
 * If not logged in log in at Rika WebLogin https://www.rika-firenet.com/web/login
 * open https://www.rika-firenet.com/web/stove/[YOURSTOVEID]
 * View sourcecode of this site (right mouse click - sourcecode)
-* Find the sensors.statusMainState and sensors.statusSubState - combinations
+* Find the sensors.statusMainState and sensors.statusSubState picture-combinations
 
 ## ToDo
 * change from request to axios
