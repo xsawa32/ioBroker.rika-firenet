@@ -63,9 +63,12 @@ use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzb
 
 ## Detailed state-picture-combinations
 * If not logged in log in at Rika WebLogin https://www.rika-firenet.com/web/login
-* open https://www.rika-firenet.com/web/stove/[YOURSTOVEID]
+* open https://www.rika-firenet.com/web/stove/[YOURSTOVEID] (use your stoveid instead)
 * View sourcecode of this site (right mouse click - sourcecode)
 * Find the sensors.statusMainState and sensors.statusSubState picture-combinations
+
+## Json with all current states of your stove
+https://www.rika-firenet.com/api/client/[YOURSTOVEID]/status (use your stoveid instead)
 
 ## ToDo
 * change from request to axios
