@@ -58,7 +58,7 @@ use if sensors.statusMainState = 11, 13, 14, 16, 17 or 50 (Wood-log check, Schei
 https://www.rika-firenet.com/images/status/Visu_SpliLog.svg
 use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzbetrieb)
 
-## Here's an example with vis (basic image):
+## Here's an example for vis (basic image):
 ![VisBasic Image](admin/visuexample.PNG)
 
 ## Detailed state-picture-combinations
