@@ -67,6 +67,11 @@ use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzb
 * View sourcecode of this site (right mouse click - sourcecode)
 * Find the sensors.statusMainState and sensors.statusSubState - combinations
 
+## ToDo
+* change from request to axios
+* setting states 
+* save password encrypted
+
 ## Changelog
 
 ### 0.0.5
