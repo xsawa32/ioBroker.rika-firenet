@@ -9,8 +9,6 @@
 
 [![NPM](https://nodei.co/npm/iobroker.rika-firenet.png?downloads=true)](https://nodei.co/npm/iobroker.rika-firenet/)
 
-**Tests:** ![Test and Release](https://github.com/xsawa32/ioBroker.rika-firenet/workflows/Test%20and%20Release/badge.svg)
-
 ## RIKA-Firenet adapter for ioBroker
 
 Control your RIKA stoves
