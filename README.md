@@ -18,7 +18,7 @@ Control your RIKA stoves
 ## Information
 At this time, adapter is only polling values from your stove. setting states will follow soon.
 Polling-intervall minimum is 1 minute so you do not appear to be a DOS-Attacker against their websites.
-This Adapter was developed for my RIKA PARO, but should also work for other RIKA stoves.
+This Adapter was developed for my RIKA PARO, but should also work with other RIKA stoves.
 
 Fill textboxes in Adapter-Config
 * Username: (E-Mail for your Rika account)
