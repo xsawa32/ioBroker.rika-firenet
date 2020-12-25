@@ -14,10 +14,10 @@
 Control your RIKA stoves over RIKA-Firenet
 
 ## Information
-You need a RIKA stove with RIKA-Firenet and an account at https://www.rika-firenet.com
-Polling-intervall minimum is 1 minute so you do not appear to be a DOS-Attacker against their websites.
-If working with javascript or blockly, change only 1 control simultaneously, because complete json have to be uploaded after modifying a control value (i'm working on this problem)
-This Adapter was developed for my RIKA PARO, but should also work with other RIKA stoves.
+* You need a RIKA stove with RIKA-Firenet and an account at https://www.rika-firenet.com
+* Polling-intervall minimum is 1 minute so you do not appear to be a DOS-Attacker against their websites.
+* If working with javascript or blockly, change only 1 control simultaneously, because complete json have to be uploaded after modifying a control value (i'm working on this problem)
+* This Adapter was developed for my RIKA PARO, but should also work with other RIKA stoves.
 
 Fill textboxes in Adapter-Config
 * Username: (E-Mail for your Rika account)

@@ -171,7 +171,7 @@ class RikaFirenet extends utils.Adapter {
 				this.TimeoutID = setTimeout(() => this.webLogin(), this.config.myinterval * 60000);
 			}	
 		} else {
-			this.log.info('change in progress: try to getstoveValues() this next time');
+			this.log.info('change in progress: try to getstoveValues() next time');
 		}
 	}
 
