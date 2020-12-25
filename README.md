@@ -71,7 +71,7 @@ use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzb
 * open https://www.rika-firenet.com/api/client/[YOURSTOVEID]/status (use your stoveid instead without brackets)
 
 ## ToDo
-* setting more than 1 state at the same time
+* setting more than 1 state at the same time with javascript or blockly
 * save password encrypted
 
 ## Changelog
