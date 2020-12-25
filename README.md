@@ -11,11 +11,12 @@
 
 ## RIKA-Firenet adapter for ioBroker
 
-Control your RIKA stoves.
+Control your RIKA stoves over RIKA-Firenet
 
 ## Information
-At this time, adapter is only polling values from your stove. setting states will follow soon.
+You need a RIKA stove with RIKA-Firenet and an account at https://www.rika-firenet.com
 Polling-intervall minimum is 1 minute so you do not appear to be a DOS-Attacker against their websites.
+If working with javascript or blockly, change only 1 control simultaneously, because complete json have to be uploaded after modifying a control value (i'm working on this problem)
 This Adapter was developed for my RIKA PARO, but should also work with other RIKA stoves.
 
 Fill textboxes in Adapter-Config
@@ -70,12 +71,13 @@ use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzb
 * open https://www.rika-firenet.com/api/client/[YOURSTOVEID]/status (use your stoveid instead without brackets)
 
 ## ToDo
-* change from request to axios
-* setting states 
+* setting more than 1 state at the same time
 * save password encrypted
 
 ## Changelog
 
+### 0.0.6
+* (xsawa32) changed from request to axios
 ### 0.0.5
 * (xsawa32) some changes in README
 ### 0.0.4

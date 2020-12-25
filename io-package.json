@@ -1,9 +1,9 @@
 {
 	"common": {
 		"name": "rika-firenet",
-		"version": "0.0.5",
+		"version": "0.0.6",
 		"news": {
-			"0.0.5": {
+			"0.0.6": {
 				"en": "update README",
 				"de": "Aktualisierung README",
 				"ru": "Начальная версия",
@@ -31,7 +31,7 @@
 		},
 		"desc": {
 			"en": "Control your RIKA stove",
-			"de": "Control your RIKA stove",
+			"de": "Steuere deinen RIKA Ofen",
 			"ru": "Control your RIKA stove",
 			"pt": "Control your RIKA stove",
 			"nl": "Control your RIKA stove",
