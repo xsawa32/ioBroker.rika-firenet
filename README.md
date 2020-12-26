@@ -11,7 +11,7 @@
 
 ## RIKA-Firenet adapter for ioBroker
 
-Control your RIKA stoves over RIKA-Firenet
+Control your RIKA stoves over RIKA-Firenet.
 
 ## Information
 * You need a RIKA stove with RIKA-Firenet and an account at https://www.rika-firenet.com
