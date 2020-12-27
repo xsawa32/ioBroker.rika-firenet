@@ -47,7 +47,6 @@ class RikaFirenet extends utils.Adapter {
 	 */
 	async onReady() {
 		// Initialize your adapter here
-		//var stoveid = this.config.mystoveid;
 
 		// Reset the connection indicator during startup
 		this.setState("info.connection", false, true);
@@ -70,20 +69,6 @@ class RikaFirenet extends utils.Adapter {
 
 		//call weblogin
 		await this.webLogin();
-		
-		// //create some static objects and subscribe
-		this.setStoveStates("name", "state", "", false, false, "");
-		this.setStoveStates("stoveID", "state", "", false, false, 0);
-		this.setStoveStates("lastSeenMinutes", "state", "", false, false, 0);
-		this.setStoveStates("lastConfirmedRevision", "state", "", false, false, 0);
-		this.setStoveStates("stoveType", "state", "", false, false, "");
-		this.setStoveStates("oem", "state", "", false, false, "");
-
-		// //create static channels and subscribe
-		this.setStoveStates("controls", "channel", "", false, false, "");
-		this.setStoveStates("sensors", "channel", "", false, false, "");
-		this.setStoveStates("stoveFeatures", "channel", "", false, false, "");
-
 	}
 
 		/**
@@ -94,11 +79,9 @@ class RikaFirenet extends utils.Adapter {
 	 * @param {any} stateValueMix
 	 * @param {string} stateTypeStr
 	 */
-	async setStoveStates(stateNameStr, stateTypeStr, stateRoleStr, stateReadBool, stateWriteBool, stateValueMix){
-
-		//...Datenpunkte mit richtigem Datentyp anlegen, wenn nicht existieren und Wert reinschreiben
+	setStoveStates(stateNameStr, stateTypeStr, stateRoleStr, stateReadBool, stateWriteBool, stateValueMix){
+		//set object with specific datatype and value, subscribe and set value
 		this.setObjectNotExists(this.config.mystoveid + "." + stateNameStr, {
-			//this.setObjectNotExists(stateNameStr, {
 			type: stateTypeStr,
 			common: {
 				name: stateNameStr,
@@ -165,15 +148,19 @@ class RikaFirenet extends utils.Adapter {
 				//testoutput, if correct data come in
 				//this.log.info("lastConfirmedRevision: " + content.lastConfirmedRevision);
 
-				//set states if correct data come in
+				//set objects and values if correct data come in
 				if (content.lastConfirmedRevision) {
-					//// this.setStoveStates(this.config.mystoveid + ".name", true, false, { val: content.name, ack: true });
-					this.setState(this.config.mystoveid + ".name", { val: content.name, ack: true });
-					this.setState(this.config.mystoveid + ".stoveID", { val: content.stoveID, ack: true });
-					this.setState(this.config.mystoveid + ".lastSeenMinutes", { val: content.lastSeenMinutes, ack: true });
-					this.setState(this.config.mystoveid + ".lastConfirmedRevision", { val: content.lastConfirmedRevision, ack: true });
-					this.setState(this.config.mystoveid + ".stoveType", { val: content.stoveType, ack: true });
-					this.setState(this.config.mystoveid + ".oem", { val: content.oem, ack: true });
+					this.setStoveStates("name", "state", "", true, false, content.name);
+					this.setStoveStates("stoveID", "state", "", true, false, content.stoveID);
+					this.setStoveStates("lastSeenMinutes", "state", "", true, false, content.lastSeenMinutes);
+					this.setStoveStates("lastConfirmedRevision", "state", "", true, false, content.lastConfirmedRevision);
+					this.setStoveStates("stoveType", "state", "", true, false, content.stoveType);
+					this.setStoveStates("oem", "state", "", true, false, content.oem);
+
+					//create channels
+					this.setStoveStates("controls", "channel", "", false, false, "");
+					this.setStoveStates("sensors", "channel", "", false, false, "");
+					this.setStoveStates("stoveFeatures", "channel", "", false, false, "");
 
 					//create and/or update states in controls, sensors and stoveFeatures
 					for (let [key, value] of Object.entries(content.controls)) {
