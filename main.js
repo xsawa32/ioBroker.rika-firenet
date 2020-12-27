@@ -60,7 +60,7 @@ class RikaFirenet extends utils.Adapter {
 		this.log.info("config stoveid: " + this.config.mystoveid);
 
 		//create device
-		await this.setObjectNotExistsAsync(this.config.mystoveid, {
+		this.setObjectNotExists(this.config.mystoveid, {
 			type: "device",
 			common: {
 				name: this.config.mystoveid,
