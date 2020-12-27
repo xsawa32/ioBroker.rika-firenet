@@ -10,7 +10,6 @@
 const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
-// const fs = require("fs");
 
 //axios with cookie support for iobroker
 //https://github.com/3846masa/axios-cookiejar-support#usage
@@ -48,6 +47,7 @@ class RikaFirenet extends utils.Adapter {
 	 */
 	async onReady() {
 		// Initialize your adapter here
+		//var stoveid = this.config.mystoveid;
 
 		// Reset the connection indicator during startup
 		this.setState("info.connection", false, true);
@@ -60,7 +60,7 @@ class RikaFirenet extends utils.Adapter {
 		this.log.info("config stoveid: " + this.config.mystoveid);
 
 		//create device
-		await this.setObjectNotExistsAsync(this.config.mystoveid, {
+		this.setObjectNotExists(this.config.mystoveid, {
 			type: "device",
 			common: {
 				name: this.config.mystoveid,
@@ -71,7 +71,7 @@ class RikaFirenet extends utils.Adapter {
 		//call weblogin
 		await this.webLogin();
 		
-		//create some static objects and subscribe
+		// //create some static objects and subscribe
 		this.setStoveStates("name", "state", "", false, false, "");
 		this.setStoveStates("stoveID", "state", "", false, false, 0);
 		this.setStoveStates("lastSeenMinutes", "state", "", false, false, 0);
@@ -79,11 +79,42 @@ class RikaFirenet extends utils.Adapter {
 		this.setStoveStates("stoveType", "state", "", false, false, "");
 		this.setStoveStates("oem", "state", "", false, false, "");
 
-		//create static channels and subscribe
+		// //create static channels and subscribe
 		this.setStoveStates("controls", "channel", "", false, false, "");
 		this.setStoveStates("sensors", "channel", "", false, false, "");
 		this.setStoveStates("stoveFeatures", "channel", "", false, false, "");
 
+	}
+
+		/**
+	 * @param {any} stateNameStr
+	 * @param {any} stateRoleStr
+	 * @param {any} stateReadBool
+	 * @param {any} stateWriteBool
+	 * @param {any} stateValueMix
+	 * @param {string} stateTypeStr
+	 */
+	async setStoveStates(stateNameStr, stateTypeStr, stateRoleStr, stateReadBool, stateWriteBool, stateValueMix){
+
+		//...Datenpunkte mit richtigem Datentyp anlegen, wenn nicht existieren und Wert reinschreiben
+		this.setObjectNotExists(this.config.mystoveid + "." + stateNameStr, {
+			//this.setObjectNotExists(stateNameStr, {
+			type: stateTypeStr,
+			common: {
+				name: stateNameStr,
+				type: typeof stateValueMix,
+				role: stateRoleStr,
+				read: stateReadBool,
+				write: stateWriteBool,
+			},
+				native: {},
+			});
+										 
+			//subscribe states
+			this.subscribeStates(this.config.mystoveid + "." + stateNameStr);
+
+			//set states
+			this.setState(this.config.mystoveid + "." + stateNameStr, { val: stateValueMix, ack: true });
 	}
 
 	async webLogin() {
@@ -136,6 +167,7 @@ class RikaFirenet extends utils.Adapter {
 
 				//set states if correct data come in
 				if (content.lastConfirmedRevision) {
+					//// this.setStoveStates(this.config.mystoveid + ".name", true, false, { val: content.name, ack: true });
 					this.setState(this.config.mystoveid + ".name", { val: content.name, ack: true });
 					this.setState(this.config.mystoveid + ".stoveID", { val: content.stoveID, ack: true });
 					this.setState(this.config.mystoveid + ".lastSeenMinutes", { val: content.lastSeenMinutes, ack: true });
@@ -146,12 +178,14 @@ class RikaFirenet extends utils.Adapter {
 					//create and/or update states in controls, sensors and stoveFeatures
 					for (let [key, value] of Object.entries(content.controls)) {
 						this.setStoveStates(`controls.${key}`, "state", "", true, true, value);
+						//this.setState(this.config.mystoveid + "." + `controls.${key}`, "state", "", true, true, value);
 					}	
 					for (let [key, value] of Object.entries(content.sensors)) {
 						this.setStoveStates(`sensors.${key}`, "state", "", true, false, value);
 					}
 					for (let [key, value] of Object.entries(content.stoveFeatures)) {
 						this.setStoveStates(`stoveFeatures.${key}`, "state", "", true, false, value);
+						//this.setState(this.config.mystoveid + "." + `stoveFeatures.${key}`, "state", "", true, false, value);
 					}
 				} else {
 					this.log.error("Malformed json: " + JSON.stringify(response2.data));
@@ -202,36 +236,6 @@ class RikaFirenet extends utils.Adapter {
 		}
 		//set free
 		changeInProgress = false;
-	}
-
-	/**
-	 * @param {any} stateNameStr
-	 * @param {any} stateRoleStr
-	 * @param {any} stateReadBool
-	 * @param {any} stateWriteBool
-	 * @param {any} stateValueMix
-	 * @param {string} stateTypeStr
-	 */
-	setStoveStates(stateNameStr, stateTypeStr, stateRoleStr, stateReadBool, stateWriteBool, stateValueMix){
-
-		//...Datenpunkte mit richtigem Datentyp anlegen, wenn nicht existieren und Wert reinschreiben
-		this.setObjectNotExists(this.config.mystoveid + "." + stateNameStr, {
-			type: stateTypeStr,
-			common: {
-				name: stateNameStr,
-				type: typeof stateValueMix,
-				role: stateRoleStr,
-				read: stateReadBool,
-				write: stateWriteBool,
-			},
-				native: {},
-			});
-										 
-			//subscribe states
-			this.subscribeStates(this.config.mystoveid + "." + stateNameStr);
-
-			//set states
-			this.setState(this.config.mystoveid + "." + stateNameStr, { val: stateValueMix, ack: true });
 	}
 
 	/**
