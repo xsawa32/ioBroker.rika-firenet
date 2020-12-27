@@ -80,6 +80,8 @@ use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzb
 
 ## Changelog
 
+### 0.0.7
+* (xsawa32) changed create device and objects in main.js
 ### 0.0.6
 * (xsawa32) changed from request to axios
 ### 0.0.5
