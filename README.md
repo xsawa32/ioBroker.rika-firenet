@@ -14,6 +14,10 @@
 Control your RIKA stoves over RIKA-Firenet.
 
 ## Information
+* Get Informations like controls, sensors, features from your RIKA stove
+* Set controls like on, off, heatingPower...
+
+## Requirements
 * You need a RIKA stove with RIKA-Firenet and an account at https://www.rika-firenet.com
 * Polling-intervall minimum is 1 minute so you do not appear to be a DOS-Attacker against their websites.
 * If working with javascript or blockly, change only 1 control simultaneously, because complete json have to be uploaded after modifying a control value (i'm working on this problem)
