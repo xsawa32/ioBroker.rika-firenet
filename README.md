@@ -96,7 +96,7 @@ use if sensors.statusMainState = 20 or 21 (Operation with wood-logs, Scheitholzb
 ## License
 MIT License
 
-Copyright (c) 2020 Andreas Wass <a.wass@sbg.at>
+Copyright (c) 2020 Andreas Wass
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
