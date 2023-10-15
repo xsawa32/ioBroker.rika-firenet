@@ -1,6 +1,6 @@
 {
   "name": "iobroker.rika-firenet",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Control your RIKA stove",
   "author": {
     "name": "xsawa32",
@@ -19,10 +19,7 @@
     "url": "https://github.com/xsawa32/ioBroker.rika-firenet"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.4.0",
-    "axios": "^0.21.1",
-    "axios-cookiejar-support": "^1.0.1",
-    "tough-cookie": "^4.0.0"
+    "@iobroker/adapter-core": "^2.4.0"
   },
   "devDependencies": {
     "@iobroker/testing": "^2.4.0",
